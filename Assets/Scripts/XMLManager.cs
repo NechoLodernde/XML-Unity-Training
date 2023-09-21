@@ -52,8 +52,20 @@ public class XMLManager : MonoBehaviour
         // Open a new xml file
         // Create xml serializer with the type to serialize
         XmlSerializer serializer = new XmlSerializer(typeof(ItemDatabase));
+
+        // Method 1
         // FileStream for the path and FileMode to access/modify the file
-        FileStream stream = new FileStream(Application.dataPath + "/StreamingFiles/XML/item_data.xml", FileMode.Create);
+        // FileStream stream = new FileStream(Application.dataPath + "/StreamingFiles/XML/item_data.xml", FileMode.Create);
+        // Serialize the item database with chosen stream
+        // serializer.Serialize(stream, itemDB);
+        // Close the stream after use
+        // stream.Close();
+
+        // Method 2
+        // Create encoding variable and set the Text Encoding format
+        var encoding = System.Text.Encoding.GetEncoding("UTF-8");
+        // Create StreamWriter to write into the file with the encoding type
+        StreamWriter stream = new StreamWriter(Application.dataPath + "/StreamingFiles/XML/item_data.xml", false, encoding);
         // Serialize the item database with chosen stream
         serializer.Serialize(stream, itemDB);
         // Close the stream after use
@@ -66,10 +78,23 @@ public class XMLManager : MonoBehaviour
         // Access an xml file
         // Create xml serializer with the type to serialize
         XmlSerializer serializer = new XmlSerializer(typeof(ItemDatabase));
+
+        // Method 1
         // FileStream for the path and FileMode to access/modify the file
-        FileStream stream = new FileStream(Application.dataPath + "/StreamingFiles/XML/item_data.xml", FileMode.Open);
+        // FileStream stream = new FileStream(Application.dataPath + "/StreamingFiles/XML/item_data.xml", FileMode.Open);
         // De-Serialize the item database
+        // itemDB = serializer.Deserialize(stream) as ItemDatabase;
+        // Close the stream after use
+        // stream.Close();
+
+        // Method 2
+        // Create the system path for the stream
+        string path = Application.dataPath + "/StreamingFiles/XML/item_data.xml";
+        // StreamReader to read the file from the designated path
+        StreamReader stream = new StreamReader(path);
+        // De-serialize the item database from stream
         itemDB = serializer.Deserialize(stream) as ItemDatabase;
+        // Close the stream after use
         stream.Close();
     }
 }
@@ -94,7 +119,7 @@ public class ItemDatabase
     public List<ItemEntry> list = new List<ItemEntry>();
 }
 
-// Create enum for materials
+// Create enum for materials available
 public enum Material
 {
     Wood,

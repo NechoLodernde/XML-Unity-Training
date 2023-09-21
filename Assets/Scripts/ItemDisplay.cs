@@ -6,10 +6,10 @@ public class ItemDisplay : MonoBehaviour
 {
     // Referenced ItemBlock prefab to access in script
     public ItemBlock itemPrefab;
-
     // Start is called before the first frame update
     void Start()
     {
+        XMLManager.XMLInstance.LoadItems();
         Display();
     }
 
