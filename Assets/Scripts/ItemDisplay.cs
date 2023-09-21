@@ -16,12 +16,21 @@ public class ItemDisplay : MonoBehaviour
     // Method to set individual item parent to panel
     public void Display()
     {
+        // Iterate through each child in parent
+        foreach (Transform child in transform)
+        {
+            // Destroy the child game object
+            Destroy(child.gameObject);
+        }
+
+        // Iterate through every item on XML Manager item database list
         foreach (ItemEntry item in XMLManager.XMLInstance.itemDB.list)
         {
             // Instantiate/Spawn item block to panel
             ItemBlock newItem = Instantiate(itemPrefab) as ItemBlock;
             // Set the item parent
             newItem.transform.SetParent(transform, false);
+            // Display the item on the panel
             newItem.Display(item);
         }
             
