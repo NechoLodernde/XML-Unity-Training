@@ -37,12 +37,6 @@ public class XMLManager : MonoBehaviour
         XMLInstance = this;
     }
 
-    // Method that will be called before first frame udpate and after Awake Method
-    private void Start()
-    {
-        
-    }
-
     // List of items
     public ItemDatabase itemDB;
 
@@ -65,7 +59,7 @@ public class XMLManager : MonoBehaviour
         // Create encoding variable and set the Text Encoding format
         var encoding = System.Text.Encoding.GetEncoding("UTF-8");
         // Create StreamWriter to write into the file with the encoding type
-        StreamWriter stream = new StreamWriter(Application.dataPath + "/StreamingFiles/XML/item_data.xml", false, encoding);
+        StreamWriter stream = new(Application.dataPath + "/StreamingFiles/XML/item_data.xml", false, encoding);
         // Serialize the item database with chosen stream
         serializer.Serialize(stream, itemDB);
         // Close the stream after use
@@ -91,7 +85,7 @@ public class XMLManager : MonoBehaviour
         // Create the system path for the stream
         string path = Application.dataPath + "/StreamingFiles/XML/item_data.xml";
         // StreamReader to read the file from the designated path
-        StreamReader stream = new StreamReader(path);
+        StreamReader stream = new(path);
         // De-serialize the item database from stream
         itemDB = serializer.Deserialize(stream) as ItemDatabase;
         // Close the stream after use
@@ -116,7 +110,7 @@ public class ItemDatabase
     // Allows you to modify the list name on xml file, not recommended to use spaces in between words
     [XmlArray("CombatEquipment")]
     // Create List with the type of Item Entry that will contain the items
-    public List<ItemEntry> list = new List<ItemEntry>();
+    public List<ItemEntry> list = new();
 }
 
 // Create enum for materials available

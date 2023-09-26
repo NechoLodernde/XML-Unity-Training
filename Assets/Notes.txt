@@ -1,0 +1,50 @@
+XML in Unity
+
+Description
+Extensible Markup Language (XML) is a markup language that defines a set of rules
+for encoding documents in a format which is both human-readable and machine-readable
+- Wikipedia  
+
+Pros
+- Easy Language to Learn
+- Unity will make the XML file for you
+- Can save entire classes or single data points
+- Works well with Arrays & Lists
+- Easy to Modify outside of Unity
+
+Cons
+- Intermediate-Level Scripting
+- Can Clutter your Classes
+- Need to be careful with Enums
+- Easy to Modify outside of Unity
+
+XML is Good for
+- Web-Based Games
+- Lists of Game Content
+- Internet-Accessible Game Content
+- Development Tools for Content Creation
+- Local Game Content
+(*Not ideal for local game saves)
+
+Unity Class
+- string
+- int
+- float[]
+- Vector3
+...
+Can be bridged by
+XMLSerializer
+Can also bridged
+XML File
+<string></string>
+<int></int>
+<array>
+	<float></float>
+	<float></float>
+</array>
+<Vector3>
+	<x></x>
+	<y></y>
+	<z></z>
+</Vector3>
+...
