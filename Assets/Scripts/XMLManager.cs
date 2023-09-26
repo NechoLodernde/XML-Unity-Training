@@ -11,6 +11,9 @@ public class XMLManager : MonoBehaviour
     // Creating static object that can be referenced in other script
     public static XMLManager XMLInstance { get; private set; }
 
+    // List of items
+    public ItemDatabase itemDB;
+
     // Create object ID for multi instance checking
     [SerializeField] private string objectID;
 
@@ -37,15 +40,12 @@ public class XMLManager : MonoBehaviour
         XMLInstance = this;
     }
 
-    // List of items
-    public ItemDatabase itemDB;
-
     // Save function to XML
     public void SaveItems()
     {
         // Open a new xml file
         // Create xml serializer with the type to serialize
-        XmlSerializer serializer = new XmlSerializer(typeof(ItemDatabase));
+        XmlSerializer serializer = new(typeof(ItemDatabase));
 
         // Method 1
         // FileStream for the path and FileMode to access/modify the file
@@ -58,6 +58,7 @@ public class XMLManager : MonoBehaviour
         // Method 2
         // Create encoding variable and set the Text Encoding format
         var encoding = System.Text.Encoding.GetEncoding("UTF-8");
+        FileStream fileCreate = new(Application.dataPath + "/StreamingFiles/XML/item_data.xml", FileMode.Create);
         // Create StreamWriter to write into the file with the encoding type
         StreamWriter stream = new(Application.dataPath + "/StreamingFiles/XML/item_data.xml", false, encoding);
         // Serialize the item database with chosen stream
