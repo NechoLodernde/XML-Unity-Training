@@ -9,11 +9,17 @@ using UnityEditor;
 
 public class MainMenuUIHandler : MonoBehaviour
 {
-    private readonly string startSceneName = "ItemStoreScene";
+    private readonly string itemStoreSceneName = "ItemStoreScene";
+    private readonly string textDisplaySceneName = "TextDisplayScene";
 
-    public void GoToStart()
+    public void GoToItemStore()
     {
-        SceneManager.LoadScene(startSceneName);
+        SceneManager.LoadScene(itemStoreSceneName);
+    }
+
+    public void GoToTextDisplay()
+    {
+        SceneManager.LoadScene(textDisplaySceneName);
     }
 
     public void ExitGame()
