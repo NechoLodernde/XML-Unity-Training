@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ItemStoreScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/TextDisplayScene.unity
+    guid: 63b8a33b1b32e754394335b06435a21f
+  - enabled: 1
+    path: Assets/Scenes/TextAddScene.unity
+    guid: 832e05080eb064f468f97539316d9815
   m_configObjects: {}

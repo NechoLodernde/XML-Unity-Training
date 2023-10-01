@@ -32,11 +32,25 @@ public class TextXMLManager : MonoBehaviour
         TextXMLInstance = this;
     }
 
+    /*
     private void Start()
     {
         TextEntry newText = new();
         newText.text = "Hai";
         TextXMLInstance.textDB.list.Add(newText);
+    }
+    */
+
+    public void SaveTexts()
+    {
+        XmlSerializer serializer = new(typeof(TextDatabase));
+
+        var encoding = System.Text.Encoding.GetEncoding("UTF-8");
+    }
+
+    public void LoadTexts()
+    {
+
     }
 
     [System.Serializable]
@@ -48,6 +62,7 @@ public class TextXMLManager : MonoBehaviour
     [System.Serializable]
     public class TextDatabase
     {
+        [XmlArray("ListOfTexts")]
         public List<TextEntry> list = new();
     }
 }
