@@ -9,6 +9,7 @@ public class TextDisplayUIHandler : MonoBehaviour
 {
     private readonly string mainMenuSceneName = "MainMenuScene";
     private readonly string textAddSceneName = "TextAddScene";
+    private readonly string textDisplaySceneName = "TextDisplayScene";
 
     public void GoToMainMenu()
     {
@@ -18,5 +19,11 @@ public class TextDisplayUIHandler : MonoBehaviour
     public void GoToTextAdd()
     {
         SceneManager.LoadScene(textAddSceneName);
+    }
+
+    public void ResetData()
+    {
+        TextXMLManager.TextXMLInstance.ResetData();
+        SceneManager.LoadScene(textDisplaySceneName);
     }
 }
