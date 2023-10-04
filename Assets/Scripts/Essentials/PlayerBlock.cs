@@ -1,18 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerBlock : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public TMP_Text playerName, playerRole;
 
-    // Update is called once per frame
-    void Update()
+    public void Display(PlayerEntry player)
     {
-        
+        playerName.text = player.playerName;
+        playerRole.text = player.playerRole.ToString();
     }
 }

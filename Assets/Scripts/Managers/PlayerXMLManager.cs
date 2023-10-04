@@ -13,11 +13,12 @@ public class PlayerXMLManager : MonoBehaviour
     public PlayerDatabase playerDB;
 
     [SerializeField] private string objectID;
-    private readonly string filepath = Application.dataPath + @"/StreamingAssets/XML/player_data.xml";
+    private string filepath;
 
     private void Awake()
     {
         objectID = name + transform.position.ToString();
+        filepath = Application.dataPath + @"/StreamingAssets/XML/player_data.xml";
 
         for (int i = 0; i < Object.FindObjectsOfType<PlayerXMLManager>().Length; i++)
         {
@@ -76,6 +77,10 @@ public class PlayerXMLManager : MonoBehaviour
                     Debug.Log(playerItems.InnerText);
                 }
             }
+        }
+        else
+        {
+            InitializeFile();
         }
     }
 

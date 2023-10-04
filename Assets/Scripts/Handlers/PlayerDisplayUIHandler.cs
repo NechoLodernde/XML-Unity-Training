@@ -1,18 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerDisplayUIHandler : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private readonly string mainMenuSceneName = "MainMenuScene";
+    private readonly string addPlayerSceneName = "PlayerAddScene";
+
+    public void GoToMainMenu()
     {
-        
+        SceneManager.LoadScene(mainMenuSceneName);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void GoToPlayerAdd()
     {
-        
+        SceneManager.LoadScene(addPlayerSceneName);
     }
 }

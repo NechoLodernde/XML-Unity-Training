@@ -11,6 +11,7 @@ public class MainMenuUIHandler : MonoBehaviour
 {
     private readonly string itemStoreSceneName = "ItemStoreScene";
     private readonly string textDisplaySceneName = "TextDisplayScene";
+    private readonly string playerDisplaySceneName = "PlayerDisplayScene";
 
     public void GoToItemStore()
     {
@@ -20,6 +21,11 @@ public class MainMenuUIHandler : MonoBehaviour
     public void GoToTextDisplay()
     {
         SceneManager.LoadScene(textDisplaySceneName);
+    }
+
+    public void GoToPlayerDisplay()
+    {
+        SceneManager.LoadScene(playerDisplaySceneName);
     }
 
     public void ExitGame()

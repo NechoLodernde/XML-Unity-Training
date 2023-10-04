@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class PlayerDisplay : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public PlayerBlock playerInfoPrefab;
 
-    // Update is called once per frame
-    void Update()
+    public void Display()
     {
-        
+        PlayerXMLManager.PlayerXMLInstance.LoadPlayer();
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach(PlayerEntry player in PlayerXMLManager.PlayerXMLInstance.playerDB.list)
+        {
+            PlayerBlock newPlayer = Instantiate(playerInfoPrefab);
+            newPlayer.transform.SetParent(transform, false);
+            newPlayer.Display(player);
+        }
     }
 }
