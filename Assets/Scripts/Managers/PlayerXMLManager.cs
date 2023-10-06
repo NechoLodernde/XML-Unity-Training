@@ -5,6 +5,7 @@ using UnityEngine;
 using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
+using TMPro;
 
 public class PlayerXMLManager : MonoBehaviour
 {
@@ -20,11 +21,11 @@ public class PlayerXMLManager : MonoBehaviour
         objectID = name + transform.position.ToString();
         filepath = Application.dataPath + @"/StreamingAssets/XML/player_data.xml";
 
-        for (int i = 0; i < Object.FindObjectsOfType<PlayerXMLManager>().Length; i++)
+        for (int i = 0; i < FindObjectsOfType<PlayerXMLManager>().Length; i++)
         {
-            if (Object.FindObjectsOfType<PlayerXMLManager>()[i] != this)
+            if (FindObjectsOfType<PlayerXMLManager>()[i] != this)
             {
-                if (Object.FindObjectsOfType<PlayerXMLManager>()[i].objectID == objectID)
+                if (FindObjectsOfType<PlayerXMLManager>()[i].objectID == objectID)
                 {
                     Destroy(gameObject);
                 }
@@ -47,8 +48,8 @@ public class PlayerXMLManager : MonoBehaviour
             playerName.InnerText = playerDB.list.ToArray()[0].playerName;
             playerRole.InnerText = playerDB.list.ToArray()[0].playerRole.ToString();
 
-            elmNew.AppendChild(playerRole);
             elmNew.AppendChild(playerName);
+            elmNew.AppendChild(playerRole);
             elmRoot.AppendChild(elmNew);
 
             xmlDoc.Save(filepath);
@@ -71,11 +72,20 @@ public class PlayerXMLManager : MonoBehaviour
             foreach(XmlNode playerInfo in playerList)
             {
                 XmlNodeList playerContent = playerInfo.ChildNodes;
-
+                PlayerEntry newEntry = new();
                 foreach (XmlNode playerItems in playerContent)
                 {
                     Debug.Log(playerItems.InnerText);
+                    if (playerItems.Name.Equals("playerName"))
+                    {
+                        newEntry.playerName = playerItems.InnerText;
+                    }
+                    if (playerItems.Name.Equals("playerRole"))
+                    {
+                        newEntry.playerRole = GetRole(playerItems.InnerText);
+                    }
                 }
+                playerDB.list.Add(newEntry);
             }
         }
         else
@@ -127,9 +137,45 @@ public class PlayerXMLManager : MonoBehaviour
             return false;
         }
     }
+
+    public List<string> GetRolesData()
+    {
+        List<string> list = new();
+        // Method 1
+        //string[] roles = System.Enum.GetNames(typeof(Roles));
+        //for(int i = 0; i < roles.Length; i++)
+        //{
+        //    Debug.Log(roles[i]);
+        //}
+
+        // Method 2
+        //foreach(Roles role in System.Enum.GetValues(typeof(Roles))){
+        //    Debug.Log(role.ToString());
+        //}
+        
+        foreach(Roles role in System.Enum.GetValues(typeof(Roles)))
+        {
+            list.Add(role.ToString());
+        }
+
+        return list;
+    }
+
+    public Roles GetRole(string input)
+    {
+        Roles baseRole = Roles.Warrior;
+        foreach(Roles role in System.Enum.GetValues(typeof(Roles)))
+        {
+            if (input.Equals(role.ToString()))
+            {
+                baseRole = role;
+                return baseRole;
+            }
+        }
+
+        return baseRole;
+    }
 }
-
-
 
 [System.Serializable]
 public class PlayerEntry

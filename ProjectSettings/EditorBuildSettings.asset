@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TextAddScene.unity
     guid: 832e05080eb064f468f97539316d9815
+  - enabled: 1
+    path: Assets/Scenes/PlayerDisplayScene.unity
+    guid: 38752acd7ea092f4398951288c568d3c
+  - enabled: 1
+    path: Assets/Scenes/PlayerAddScene.unity
+    guid: d32fc9091bb20484ca99234dd5132a14
   m_configObjects: {}

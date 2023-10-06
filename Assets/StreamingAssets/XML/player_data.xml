@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PlayerDatabase>
+  <PlayerEntry>
+    <playerName>Nechomer</playerName>
+    <playerRole>Hero</playerRole>
+  </PlayerEntry>
+  <PlayerEntry>
+    <playerName>West Pane</playerName>
+    <playerRole>Warrior</playerRole>
+  </PlayerEntry>
+</PlayerDatabase>
