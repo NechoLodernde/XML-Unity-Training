@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5829026481232240365}
   - component: {fileID: 5829026481232240366}
   - component: {fileID: 5829026481232240363}
+  - component: {fileID: -5589760741397529556}
   m_Layer: 5
   m_Name: PlayerInfoButton
   m_TagString: Untagged
@@ -123,7 +124,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5829026481232240365}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -5589760741397529556}
+        m_TargetAssemblyTypeName: PlayerEdit, Assembly-CSharp
+        m_MethodName: GoToEditPlayerScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5829026481232240363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,6 +151,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerName: {fileID: 5829026481648261425}
   playerRole: {fileID: 5829026481387676707}
+--- !u!114 &-5589760741397529556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5829026481232240352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5b8ebeb89b276d41bd4e1066dafeca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNameField: {fileID: 5829026481648261425}
+  playerRoleField: {fileID: 5829026481387676707}
 --- !u!1 &5829026481387676709
 GameObject:
   m_ObjectHideFlags: 0

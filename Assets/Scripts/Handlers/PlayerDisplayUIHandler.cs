@@ -8,6 +8,11 @@ public class PlayerDisplayUIHandler : MonoBehaviour
     private readonly string mainMenuSceneName = "MainMenuScene";
     private readonly string addPlayerSceneName = "PlayerAddScene";
 
+    private void Start()
+    {
+        PlayerXMLManager.PlayerXMLInstance.playerDB.list.Clear();
+    }
+
     public void GoToMainMenu()
     {
         SceneManager.LoadScene(mainMenuSceneName);

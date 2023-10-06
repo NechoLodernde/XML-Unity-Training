@@ -14,7 +14,7 @@ public class PlayerXMLManager : MonoBehaviour
     public PlayerDatabase playerDB;
 
     [SerializeField] private string objectID;
-    private string filepath;
+    [SerializeField] private string filepath, prevPlayerName;
 
     private void Awake()
     {
@@ -33,6 +33,8 @@ public class PlayerXMLManager : MonoBehaviour
         }
 
         PlayerXMLInstance = this;
+
+        DontDestroyOnLoad(gameObject);
     }
 
     public void SavePlayer()
@@ -87,6 +89,57 @@ public class PlayerXMLManager : MonoBehaviour
                 }
                 playerDB.list.Add(newEntry);
             }
+        }
+        else
+        {
+            InitializeFile();
+        }
+    }
+
+    public void ModifyPlayer(string playerName, string playerRole)
+    {
+        XmlDocument xmlDoc = new();
+        if (CheckFileLocation())
+        {
+            xmlDoc.Load(filepath);
+
+            XmlNodeList playerList = xmlDoc.GetElementsByTagName("PlayerEntry");
+
+            //prevPlayerName = PlayerXMLInstance.playerDB.list.ToArray()[0].playerName;
+            //prevPlayerRole = PlayerXMLInstance.playerDB.list.ToArray()[0].playerRole.ToString();
+
+            foreach (XmlNode playerInfo in playerList)
+            {
+                XmlNodeList playerContent = playerInfo.ChildNodes;
+                //PlayerEntry newEntry = new();
+                string prevName = "";
+                foreach (XmlNode playerItems in playerContent)
+                {
+                    //Debug.Log(playerItems.InnerText);
+
+                    if (playerItems.Name.Equals("playerName"))
+                    {
+                        prevName = playerItems.InnerText;
+                        if (playerItems.InnerText.Equals(prevPlayerName))
+                        {
+                            playerItems.InnerText = playerName;
+                            prevName = playerItems.InnerText;
+                        }
+                        //newEntry.playerName = playerItems.InnerText;
+                    }
+                    if (playerItems.Name.Equals("playerRole"))
+                    {
+                        if (prevName.Equals(playerName))
+                        {
+                            playerItems.InnerText = GetRole(playerRole).ToString();
+                        }
+                        //newEntry.playerRole = GetRole(playerItems.InnerText);
+                    }
+                }
+                //playerDB.list.Add(newEntry);
+            }
+            PlayerXMLInstance.playerDB.list.Clear();
+            xmlDoc.Save(filepath);
         }
         else
         {
@@ -174,6 +227,11 @@ public class PlayerXMLManager : MonoBehaviour
         }
 
         return baseRole;
+    }
+
+    public void SetPrevPlayerName(string setName)
+    {
+        prevPlayerName = setName;
     }
 }
 

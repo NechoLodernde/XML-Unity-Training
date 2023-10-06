@@ -2,10 +2,14 @@
 <PlayerDatabase>
   <PlayerEntry>
     <playerName>Nechomer</playerName>
+    <playerRole>Healer</playerRole>
+  </PlayerEntry>
+  <PlayerEntry>
+    <playerName>East Wood</playerName>
     <playerRole>Hero</playerRole>
   </PlayerEntry>
   <PlayerEntry>
-    <playerName>West Pane</playerName>
+    <playerName>Nechomier</playerName>
     <playerRole>Warrior</playerRole>
   </PlayerEntry>
 </PlayerDatabase>
