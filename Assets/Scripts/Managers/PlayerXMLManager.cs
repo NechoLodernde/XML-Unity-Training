@@ -21,11 +21,11 @@ public class PlayerXMLManager : MonoBehaviour
         objectID = name + transform.position.ToString();
         filepath = Application.dataPath + @"/StreamingAssets/XML/player_data.xml";
 
-        for (int i = 0; i < FindObjectsOfType<PlayerXMLManager>().Length; i++)
+        for (int i = 0; i < FindObjectsByType<PlayerXMLManager>(FindObjectsSortMode.None).Length; i++)
         {
-            if (FindObjectsOfType<PlayerXMLManager>()[i] != this)
+            if (FindObjectsByType<PlayerXMLManager>(FindObjectsSortMode.None)[i] != this)
             {
-                if (FindObjectsOfType<PlayerXMLManager>()[i].objectID == objectID)
+                if (FindObjectsByType<PlayerXMLManager>(FindObjectsSortMode.None)[i].objectID == objectID)
                 {
                     Destroy(gameObject);
                 }

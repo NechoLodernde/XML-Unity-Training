@@ -23,13 +23,13 @@ public class XMLManager : MonoBehaviour
         // Added object ID with name + object position to string
         objectID = name + transform.position.ToString();
         // Create a for loop for iterating all object of same type
-        for (int i = 0; i < Object.FindObjectsOfType<XMLManager>().Length; i++)
+        for (int i = 0; i < FindObjectsByType<XMLManager>(FindObjectsSortMode.None).Length; i++)
         {
             // If the object is not equal to this
-            if (Object.FindObjectsOfType<XMLManager>()[i] != this)
+            if (FindObjectsByType<XMLManager>(FindObjectsSortMode.None)[i] != this)
             {
                 // If the object have the same ID, then destroy the new instance
-                if (Object.FindObjectsOfType<XMLManager>()[i].objectID == objectID)
+                if (FindObjectsByType<XMLManager>(FindObjectsSortMode.None)[i].objectID == objectID)
                 {
                     Destroy(gameObject);
                 }

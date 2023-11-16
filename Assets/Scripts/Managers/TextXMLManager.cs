@@ -18,11 +18,11 @@ public class TextXMLManager : MonoBehaviour
     {
         objectID = name + transform.position.ToString();
         
-        for(int i = 0; i < Object.FindObjectsOfType<TextXMLManager>().Length; i++)
+        for(int i = 0; i < FindObjectsByType<TextXMLManager>(FindObjectsSortMode.None).Length; i++)
         {
-            if (Object.FindObjectsOfType<TextXMLManager>()[i] != this)
+            if (FindObjectsByType<TextXMLManager>(FindObjectsSortMode.None)[i] != this)
             {
-                if(Object.FindObjectsOfType<TextXMLManager>()[i].objectID == objectID)
+                if(FindObjectsByType<TextXMLManager>(FindObjectsSortMode.None)[i].objectID == objectID)
                 {
                     Destroy(gameObject);
                 }
