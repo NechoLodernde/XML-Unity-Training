@@ -43,9 +43,11 @@ public class PlayerAddUIHandler : MonoBehaviour
         } else if(playerName.Length >= 3)
         {
             PlayerXMLManager.PlayerXMLInstance.playerDB.list.Clear();
-            PlayerEntry newEntry = new();
-            newEntry.playerName = playerName;
-            newEntry.playerRole = PlayerXMLManager.PlayerXMLInstance.GetRole(playerRole);
+            PlayerEntry newEntry = new()
+            {
+                playerName = playerName,
+                playerRole = PlayerXMLManager.PlayerXMLInstance.GetRole(playerRole)
+            };
             PlayerXMLManager.PlayerXMLInstance.playerDB.list.Add(newEntry);
             PlayerXMLManager.PlayerXMLInstance.SavePlayer();
             GoToPlayerDisplay();
